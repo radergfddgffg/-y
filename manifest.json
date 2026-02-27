@@ -1,0 +1,12 @@
+{
+    "display_name": "大白Y",
+    "loading_order": 10,
+    "requires": [],
+    "optional": [],
+    "js": "index.js",
+    "css": "style.css",
+    "author": "biex (modded)",
+    "version": "2.5.0",
+    "homePage": "https://github.com/radergfddgffg/gushi",
+    "generate_interceptor": "dabaiyGenerateInterceptor"
+}
