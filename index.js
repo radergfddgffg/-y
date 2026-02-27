@@ -119,11 +119,11 @@ async function updateLittleWhiteBoxExtension() {
         const response = await fetch('/api/extensions/update', {
             method: 'POST',
             headers: getRequestHeaders(),
-            body: JSON.stringify({ extensionName: 'gushi', global: true }),
+            body: JSON.stringify({ extensionName: '-y', global: true }),
         });
         if (!response.ok) {
             const text = await response.text();
-            toastr.error(text || response.statusText, 'gushi update failed', { timeOut: 5000 });
+            toastr.error(text || response.statusText, '-y update failed', { timeOut: 5000 });
             return false;
         }
         const data = await response.json();
@@ -132,7 +132,7 @@ async function updateLittleWhiteBoxExtension() {
         toastr.success(message, title);
         return true;
     } catch (error) {
-        toastr.error('Error during update', 'gushi update failed');
+        toastr.error('Error during update', '-y update failed');
         return false;
     }
 }
