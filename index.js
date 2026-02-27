@@ -48,6 +48,7 @@ extension_settings[EXT_ID] = extension_settings[EXT_ID] || {
     wrapperIframe: true,
     renderEnabled: true,
     maxRenderedMessages: 5,
+    un_enabled: true,
 };
 
 const settings = extension_settings[EXT_ID];
@@ -276,7 +277,7 @@ function toggleSettingsControls(enabled) {
         'xiaobaix_use_blob', 'xiaobaix_variables_core_enabled', 'xiaobaix_variables_mode', 'Wrapperiframe', 'xiaobaix_render_enabled',
         'xiaobaix_max_rendered', 'xiaobaix_story_outline_enabled', 'xiaobaix_story_summary_enabled',
         'xiaobaix_novel_draw_enabled', 'xiaobaix_novel_draw_open_settings',
-        'xiaobaix_tts_enabled', 'xiaobaix_tts_open_settings'
+        'xiaobaix_tts_enabled', 'xiaobaix_tts_open_settings', 'dabaiy_un_enabled'
     ];
     controls.forEach(id => {
         $(`#${id}`).prop('disabled', !enabled).closest('.flex-container').toggleClass('disabled-control', !enabled);
@@ -365,6 +366,13 @@ async function setupSettings() {
 
         // BigWhiteY Custom Settings Init
         settings.dabaiyConfig = settings.dabaiyConfig || { plotPref: '', writingStyle: '', artStyle: '' };
+        settings.un_enabled = settings.un_enabled !== false;
+
+        $("#dabaiy_un_enabled").prop("checked", settings.un_enabled).on("change", async function () {
+            settings.un_enabled = $(this).prop("checked");
+            saveSettingsDebounced();
+        });
+
         $('#dabaiy_plot_pref').val(settings.dabaiyConfig.plotPref || '').on('input', function () {
             settings.dabaiyConfig.plotPref = $(this).val();
             saveSettingsDebounced();
@@ -689,7 +697,7 @@ jQuery(async () => {
 });
 
 export async function dabaiyGenerateInterceptor(req) {
-    if (!settings.dabaiyConfig) return;
+    if (!settings.un_enabled || !settings.dabaiyConfig) return;
     let injectionText = "";
     if (settings.dabaiyConfig.plotPref) {
         injectionText += `\n[剧情发展偏好/要求: ${settings.dabaiyConfig.plotPref}]\n`;

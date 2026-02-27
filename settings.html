@@ -17,24 +17,11 @@
             class="vertical-text">数据互动</span></div>
         <div class="menu-tab" data-target="wallhaven" style="border-bottom:1px solid #303030;"><span
             class="vertical-text">辅助工具</span></div>
+        <div class="menu-tab" data-target="un-module" style="border-bottom:1px solid #303030;"><span
+            class="vertical-text">剧情控制</span></div>
       </div>
       <div class="settings-content">
         <div class="js-memory settings-section" style="display:block;">
-          <div class="section-divider" style="margin-bottom:0;margin-top:0;">大白Y 专属剧情偏好</div>
-          <hr class="sysHR" />
-          <div class="flex-container flexFlowColumn" style="gap:8px;">
-            <small style="color:var(--SmartThemeQuoteColor);">这些偏好会自动注入给 AI，深度控制接下来的剧情与文风！</small>
-            <label for="dabaiy_plot_pref">剧情发展偏好</label>
-            <textarea id="dabaiy_plot_pref" class="text_pole textarea_compact" rows="3"
-              placeholder="例如：接下来他们会遇到一场意外..."></textarea>
-            <label for="dabaiy_writing_style">文体风格</label>
-            <textarea id="dabaiy_writing_style" class="text_pole textarea_compact" rows="2"
-              placeholder="例如：日系轻小说文风，辞藻华丽..."></textarea>
-            <label for="dabaiy_art_style">画风设定 (备用)</label>
-            <input type="text" id="dabaiy_art_style" class="text_pole"
-              placeholder="例如：(masterpiece, best quality, anime)" />
-          </div>
-          <br>
           <div class="section-divider" style="margin-bottom:0;margin-top:0;">总开关 (原小白X功能)</div>
           <hr class="sysHR" />
           <div class="flex-container alignItemsCenter" style="gap:8px;flex-wrap:wrap;">
@@ -251,6 +238,41 @@
           <div class="flex-container">
             <input type="checkbox" id="xiaobaix_variables_panel_enabled" />
             <label for="xiaobaix_variables_panel_enabled">变量面板</label>
+          </div>
+        </div>
+        <div class="un-module settings-section" style="display:none;">
+          <div class="section-divider">剧情与文风控制 (User Narrative)
+            <hr class="sysHR">
+          </div>
+          <div class="flex-container">
+            <input type="checkbox" id="dabaiy_un_enabled" />
+            <label for="dabaiy_un_enabled" class="has-tooltip"
+              data-tooltip="启用后，将自动把设定的偏好注入到大模型的提示词中，并支持自定义画风。">总开关：启用剧情与画风控制</label>
+          </div>
+          <br>
+
+          <div class="section-divider">一、文字生成偏好 (Plot & Style)
+            <hr class="sysHR">
+          </div>
+          <div class="flex-container flexFlowColumn" style="gap:8px;">
+            <small style="color:var(--SmartThemeQuoteColor);">这些偏好会自动注入给 AI，深度控制接下来的剧情与文风！</small>
+            <label for="dabaiy_plot_pref">剧情发展偏好</label>
+            <textarea id="dabaiy_plot_pref" class="text_pole textarea_compact" rows="3"
+              placeholder="例如：禁止完全服务user，人物要有性格，要学会拒绝..."></textarea>
+            <label for="dabaiy_writing_style">文体风格</label>
+            <textarea id="dabaiy_writing_style" class="text_pole textarea_compact" rows="2"
+              placeholder="例如：日系轻小说文风，辞藻华丽..."></textarea>
+          </div>
+
+          <br>
+          <div class="section-divider">二、画风设定 (Art Style)
+            <hr class="sysHR">
+          </div>
+          <div class="flex-container flexFlowColumn" style="gap:8px;">
+            <small style="color:var(--SmartThemeQuoteColor);">如果有联动其他画图需求，这里的画风也会一并被使用。</small>
+            <label for="dabaiy_art_style">画风设定 (备用)</label>
+            <textarea id="dabaiy_art_style" class="text_pole textarea_compact" rows="2"
+              placeholder="例如：(masterpiece, best quality, anime)"></textarea>
           </div>
         </div>
       </div>
