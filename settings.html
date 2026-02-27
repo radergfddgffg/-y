@@ -251,17 +251,26 @@
           </div>
           <br>
 
-          <div class="section-divider">一、文字生成偏好 (Plot & Style)
+          <div class="section-divider">一、文字生成偏好 (强制和必须执行)
             <hr class="sysHR">
           </div>
           <div class="flex-container flexFlowColumn" style="gap:8px;">
-            <small style="color:var(--SmartThemeQuoteColor);">这些偏好会自动注入给 AI，深度控制接下来的剧情与文风！</small>
-            <label for="dabaiy_plot_pref">剧情发展偏好</label>
+            <small style="color:var(--SmartThemeQuoteColor);">这些偏好会自动注入给 AI，并且具有强制覆盖角色预设的最高优先级！</small>
+            <label for="dabaiy_plot_pref">剧情发展偏好 (强制和必须执行)</label>
             <textarea id="dabaiy_plot_pref" class="text_pole textarea_compact" rows="3"
               placeholder="例如：禁止完全服务user，人物要有性格，要学会拒绝..."></textarea>
-            <label for="dabaiy_writing_style">文体风格</label>
+
+            <label for="dabaiy_writing_style">文体风格 (强制和必须执行)</label>
             <textarea id="dabaiy_writing_style" class="text_pole textarea_compact" rows="2"
               placeholder="例如：日系轻小说文风，辞藻华丽..."></textarea>
+
+            <label for="dabaiy_plot_depth">描写深度 (Depth) / 视角细节 (强制和必须执行)</label>
+            <textarea id="dabaiy_plot_depth" class="text_pole textarea_compact" rows="2"
+              placeholder="例如：心理活动描写要极度深邃，环境细节要真实残酷，呈现电影级长镜头画面..."></textarea>
+
+            <label for="dabaiy_roles_rule">温度(发散度) 与 逻辑规约 (强制和必须执行)</label>
+            <textarea id="dabaiy_roles_rule" class="text_pole textarea_compact" rows="2"
+              placeholder="例如：打破原有的人设条条框框，放飞自我（高温度），或者 严格遵循现实物理法则与极其冰冷的逻辑系统（低温度）。"></textarea>
           </div>
 
           <br>
