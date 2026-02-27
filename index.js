@@ -103,7 +103,7 @@ async function checkLittleWhiteBoxUpdate() {
         if (!localRes.ok) return null;
         const localManifest = await localRes.json();
         const localVersion = localManifest.version;
-        const remoteRes = await fetch(`https://api.github.com/repos/radergfddgffg/gushi/contents/manifest.json?t=${timestamp}`, { cache: 'no-cache' });
+        const remoteRes = await fetch(`https://api.github.com/repos/radergfddgffg/-y/contents/manifest.json?t=${timestamp}`, { cache: 'no-cache' });
         if (!remoteRes.ok) return null;
         const remoteData = await remoteRes.json();
         const remoteManifest = JSON.parse(atob(remoteData.content));
