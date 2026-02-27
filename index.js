@@ -365,7 +365,7 @@ async function setupSettings() {
         $(settingsContainer).append(settingsHtml);
 
         // BigWhiteY Custom Settings Init
-        settings.dabaiyConfig = settings.dabaiyConfig || { plotPref: '', writingStyle: '', artStyle: '' };
+        settings.dabaiyConfig = settings.dabaiyConfig || { plotPref: '', writingStyle: '', artStyle: '', plotDepth: '', rolesRule: '', plotPacing: '', focusRatio: '', formatRule: '' };
         settings.un_enabled = settings.un_enabled !== false;
 
         $("#dabaiy_un_enabled").prop("checked", settings.un_enabled).on("change", async function () {
@@ -385,7 +385,26 @@ async function setupSettings() {
             settings.dabaiyConfig.artStyle = $(this).val();
             saveSettingsDebounced();
         });
-
+        $('#dabaiy_plot_depth').val(settings.dabaiyConfig.plotDepth || '').on('input', function () {
+            settings.dabaiyConfig.plotDepth = $(this).val();
+            saveSettingsDebounced();
+        });
+        $('#dabaiy_roles_rule').val(settings.dabaiyConfig.rolesRule || '').on('input', function () {
+            settings.dabaiyConfig.rolesRule = $(this).val();
+            saveSettingsDebounced();
+        });
+        $('#dabaiy_plot_pacing').val(settings.dabaiyConfig.plotPacing || '').on('input', function () {
+            settings.dabaiyConfig.plotPacing = $(this).val();
+            saveSettingsDebounced();
+        });
+        $('#dabaiy_focus_ratio').val(settings.dabaiyConfig.focusRatio || '').on('input', function () {
+            settings.dabaiyConfig.focusRatio = $(this).val();
+            saveSettingsDebounced();
+        });
+        $('#dabaiy_format_rule').val(settings.dabaiyConfig.formatRule || '').on('input', function () {
+            settings.dabaiyConfig.formatRule = $(this).val();
+            saveSettingsDebounced();
+        });
         setupDebugButtonInSettings();
 
         $("#xiaobaix_enabled").prop("checked", settings.enabled).on("change", async function () {
@@ -710,6 +729,15 @@ export async function dabaiyGenerateInterceptor(req) {
     }
     if (settings.dabaiyConfig.rolesRule) {
         injectionText += `\n▶ [极高优先级-逻辑规约/发散度(Temperature)与角色覆盖]: ${settings.dabaiyConfig.rolesRule}`;
+    }
+    if (settings.dabaiyConfig.plotPacing) {
+        injectionText += `\n▶ [极高优先级-剧情节奏与推演速度(Pacing)]: ${settings.dabaiyConfig.plotPacing}`;
+    }
+    if (settings.dabaiyConfig.focusRatio) {
+        injectionText += `\n▶ [极高优先级-描写重心与对话动作比例(Focus)]: ${settings.dabaiyConfig.focusRatio}`;
+    }
+    if (settings.dabaiyConfig.formatRule) {
+        injectionText += `\n▶ [极高优先级-排版格式与输出结构(Format)]: ${settings.dabaiyConfig.formatRule}`;
     }
 
     if (injectionText.length > 0) {
