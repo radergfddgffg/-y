@@ -708,7 +708,7 @@ export async function dabaiyGenerateInterceptor(req) {
     if (injectionText.length > 0) {
         req.messages.push({
             role: "system",
-            content: `[System Note: 以下是User对当前扮演和剧情的核心要求，请在生成回复时严格遵循：]${injectionText}`
+            content: `[System Note: 【最高优先级核心指令】以下是User对剧情发展和文风风格的绝对强制要求！你必须在接下来的回复中无条件、严格地贯彻执行以下设定，不可偏离或遗漏：]${injectionText}`
         });
     }
 }
