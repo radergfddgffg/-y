@@ -365,7 +365,7 @@ async function setupSettings() {
         $(settingsContainer).append(settingsHtml);
 
         // BigWhiteY Custom Settings Init
-        settings.dabaiyConfig = settings.dabaiyConfig || { plotPref: '', writingStyle: '', artStyle: '', plotDepth: '', rolesRule: '', plotPacing: '', focusRatio: '', formatRule: '' };
+        settings.dabaiyConfig = settings.dabaiyConfig || { plotPref: '', writingStyle: '', artStyle: '', plotDepth: '', rolesRule: '', plotPacing: '', focusRatio: '', formatRule: '', regexTemplate: '' };
         settings.un_enabled = settings.un_enabled !== false;
 
         $("#dabaiy_un_enabled").prop("checked", settings.un_enabled).on("change", async function () {
@@ -403,6 +403,10 @@ async function setupSettings() {
         });
         $('#dabaiy_format_rule').val(settings.dabaiyConfig.formatRule || '').on('input', function () {
             settings.dabaiyConfig.formatRule = $(this).val();
+            saveSettingsDebounced();
+        });
+        $('#dabaiy_regex_template').val(settings.dabaiyConfig.regexTemplate || '').on('input', function () {
+            settings.dabaiyConfig.regexTemplate = $(this).val();
             saveSettingsDebounced();
         });
         setupDebugButtonInSettings();
@@ -738,6 +742,9 @@ export async function dabaiyGenerateInterceptor(req) {
     }
     if (settings.dabaiyConfig.formatRule) {
         injectionText += `\n▶ [极高优先级-排版格式与输出结构(Format)]: ${settings.dabaiyConfig.formatRule}`;
+    }
+    if (settings.dabaiyConfig.regexTemplate) {
+        injectionText += `\n▶ [极高优先级-强制输出模板(XML Tag/Template)]: \n严格按照此处给定的格式输出特殊内容:\n${settings.dabaiyConfig.regexTemplate}`;
     }
 
     if (injectionText.length > 0) {

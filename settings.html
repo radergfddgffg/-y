@@ -283,6 +283,18 @@
             <label for="dabaiy_format_rule">排版格式与输出结构 (强制和必须执行)</label>
             <textarea id="dabaiy_format_rule" class="text_pole textarea_compact" rows="2"
               placeholder="例如：必须使用Markdown排版，关键动作加粗，内心独白使用斜体。"></textarea>
+
+            <div class="section-divider" style="margin-top:10px;">三、强制输出标签与正则模板 (Format & Regex Template)
+              <hr class="sysHR">
+            </div>
+            <small style="color:var(--SmartThemeQuoteColor);">
+              <strong>关于正则模板与AI识别的科普：</strong><br>
+              单纯让AI“按特定格式输出”很容易失效。但如果强制要求AI使用特定的 <strong>XML标签结构</strong>（例如您图中的 <code>&lt;pic prompt="..."&gt;</code>，或者是 <code>&lt;thought&gt;心理活动&lt;/thought&gt;</code>），AI会对这种“类似代码”的结构极其敏感，识别率会呈指数级上升！<br>
+              同时，这能让您自己写的<strong>正则表达式 (Regular Expressions)</strong> 在前端更容易、提取地更精准（例如用 <code>/&lt;thought&gt;(.*?)&lt;\/thought&gt;/s</code> 完美扣出心理活动），绝不误伤正文。
+            </small>
+            <label for="dabaiy_regex_template" style="margin-top:10px;">强制输出模板结构 (强烈建议使用 &lt;标签&gt; 包裹)</label>
+            <textarea id="dabaiy_regex_template" class="text_pole textarea_compact" rows="3"
+              placeholder="例如：你必须在回复末尾，将你的内心阴暗想法用 <hidden_thought>标签包裹起来！"></textarea>
           </div>
 
           <br>
