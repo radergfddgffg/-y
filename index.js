@@ -1,10 +1,9 @@
-import { getRequestHeaders } from "../../../extensions.js";
-import { extension_settings } from "../../../../extensions.js";
+import { extension_settings } from "../../../extensions.js";
 import { saveSettingsDebounced } from "../../../../script.js";
 
 // Core logic variables
-const extensionName = "dabaiy_core_controller";
-const extensionFolderPath = `scripts/extensions/-y`;
+const extensionName = "-y";
+const extensionFolderPath = `scripts/extensions/third-party/-y`;
 const extensionSettings = extension_settings[extensionName] || {};
 
 // Ensures we always have a config block to save our narrative preferences
